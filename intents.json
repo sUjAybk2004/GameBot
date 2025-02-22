@@ -1,0 +1,106 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": ["Hi", "Hello", "Hey", "What's up?", "Greetings", "Yo!", "Howdy", "Hey there!", "Sup?"],
+            "responses": ["Hey there gamer! Ready to dive into an epic adventure?", "Hello! Let's find your next gaming obsession!"],
+            "context": [""]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye", "I'm out", "Catch you later", "Peace out", "Take care", "Later!"],
+            "responses": ["Goodbye legend! Hope you find an awesome game!", "See you champ! Come back for more epic recommendations!"],
+            "context": [""]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "Thank you", "Appreciate it", "That's helpful", "Much obliged", "Cheers", "Thanks a lot!", "Big thanks!"],
+            "responses": ["You're welcome! Game on and have a blast!", "Anytime! May your gaming adventures be legendary!"],
+            "context": [""]
+        },
+        {
+            "tag": "recommendation",
+            "patterns": ["Can you recommend a game?", "Suggest me a good game", "What game should I play?", "Any game recommendations?", "I'm bored, what should I play?"],
+            "responses": ["Absolutely! What kind of adventure are you looking for?", "Sure thing! Do you want action adventure or strategy?"],
+            "context": [""]
+        },
+        {
+            "tag": "playstation",
+            "patterns": ["Recommend a PlayStation game", "What should I play on PS5?", "Best games for PS4?", "Top-rated PlayStation exclusives?"],
+            "responses": ["For an epic PlayStation experience try, God of War Ragnarök, The Last of Us Part II, Spider-Man 2!"],
+            "context": [""]
+        },
+        {
+            "tag": "pc",
+            "patterns": ["Recommend a PC game", "Best games for PC?", "Top-rated PC games?", "I want a high-performance PC game!"],
+            "responses": ["PC gaming at its finest! Play, Cyberpunk 2077, Baldur's Gate 3, Elden Ring"],
+            "context": [""]
+        },
+        {
+            "tag": "xbox",
+            "patterns": ["Recommend an Xbox game", "Best games for Xbox Series X?", "Top-rated Xbox exclusives?", "What should I play on Xbox?"],
+            "responses": ["Xbox gamers check out, Halo Infinite, Forza Horizon 5, Gears 5, for an amazing experience!"],
+            "context": [""]
+        },
+        {
+            "tag": "action",
+            "patterns": ["Recommend an action game", "Suggest an action-packed game", "What's a good action game?", "Any adrenaline-pumping games?", "Need a game with epic combat!"],
+            "responses": ["Brace yourself for non-stop thrills! try, Metal Gear Rising: Revengeance, Resident Evil 4 (2024), Uncharted: The Nathan Drake Collection, Alan Wake 2, Batman Arkham Trilogy, Assassin's Creed Odessy, Horizon Zero Dawn, The Last Of Us Part 2, Hades, Marvel’s Spider-Man 2, Red Dead Redemption 2, God Of War Ragnarök, The Legend of Zelda: Tears of the Kingdom, Elden Ring, Grand Theft Auto V!"],
+            "context": [""]
+        },
+        {
+            "tag": "adventure",
+            "patterns": ["Can you suggest an adventure game?", "What's a good adventure game to play?", "Recommend an adventure game", "I want a story-driven game!", "Any great open-world games?"],
+            "responses": ["Embark on an unforgettable journey! Play, The Legend of Zelda, Breath of the Wild, Uncharted 4, Fallout 4, A Way Out, Starfield, Ratchet & Clank: Rift Apart, Far Cry 4, The Wolf Among Us, Hogwarts Legacy, Gone Home, Bioshock Infinite, Assassin's Creed Valhalla, Life is Strange, Marvel’s Spider-Man 2, Black Myth Wukong, Red Dead Redemption 2!"],
+            "context": [""]
+        },
+        {
+            "tag": "role_playing",
+            "patterns": ["Suggest a role-playing game", "What's a good RPG?", "Recommend an RPG game", "I love deep character customization!", "Any great fantasy RPGs?"],
+            "responses": ["Get ready to live a new life! Try, Baldur's Gate 3, Persona 5, In Stars and Time, Horizon Forbidden West, Final Fantasy 7 Rebirth, Cyberpunk 2077, The Outer Worlds, Pillars of Eternity, Persona 5 Royal, Dragon's Dogma 2, Bloodborne, Elder Scrolls 5: Skyrim, The Witcher 3: Wild Hunt, Mass Effect 2, Assassin's Creed Odyssey, Elden Ring, for an incredible RPG experience!"],
+            "context": [""]
+        },
+        {
+            "tag": "simulation",
+            "patterns": ["Can you recommend a simulation game?", "What's a good sim game?", "Suggest a simulation game", "I love management games!", "Any good life sim games?"],
+            "responses": ["Build create and rule! Try, The Sims 4, Cities: Skylines, Gods of Olympus, Stellaris: Galaxy Command, The Lord of the Rings: War, DOFUS Touch: A WAKFU Prequel, Zero City: Bunker and Shelter, Clash of Clans, Call of Duty, Total War Battles: Kingdom, Star Wars: Commander, DomiNations, Jungle Heat, Boom Beach, Stardew Valley, for some top-notch simulation fun!"],
+            "context": [""]
+        },
+        {
+            "tag": "strategy",
+            "patterns": ["Recommend a strategy game", "What's a good strategy game?", "Suggest a strategy game to play", "I love tactical games!", "Any good turn-based strategy games?"],
+            "responses": ["Sharpen your tactics and outsmart your foes! Play, Civilization VI, XCOM 2, Crusader Kings 3, Total War: Three Kingdoms, Europa Universalis 4, Sins of a Solar Empire 2, Old World, Civilization 6, Stellaris, Endless Legend', Alpha Centauri, Age of Wonders 4, Iron Harvest, Battlefleet Gothic: Armada 2, StarCraft 2, Total War: Warhammer III!"],
+            "context": [""]
+        },
+        {
+            "tag": "horror",
+            "patterns": ["Can you recommend a horror game?", "What's a good scary game?", "Suggest a horror game", "I want to play a terrifying game!", "Any psychological horror games?"],
+            "responses": ["Prepare for chills and thrills! Experience terror with, Resident Evil Village, Mouthwashing, The Outlast Trials, Reveil, Alan Wake 2, Lethal Company, Scorn, Resident Evil 4 Remake, The Mortuary Assistant, Little Nightmares 2', Metro Exodus, Alien: Isolation, SCP Secret Laboratory, Silent Hill 2, Outlast!"],
+            "context": [""]
+        },
+        {
+            "tag": "sports",
+            "patterns": ["Recommend a sports game", "Best sports games?", "Any good football games?", "I love basketball games!", "Suggest a racing game!"],
+            "responses": ["Get competitive with 'FIFA 23', 'NBA 2K23', 'Mario Golf', 'Rocket League', 'Tony Hawk's Pro Skater', 'EA Sports College Football 25', 'Cricket 24', 'Stick Cricket', 'World Cricket Championship 2', 'Score Hero!', 'Score World Goals', 'FIFA 2K24', 'Rocket League', 'Badminton: Challenge!', or 'Madden NFL 24'!"],
+            "context": [""]
+        },
+        {
+            "tag": "high_graphics",
+            "patterns": ["Recommend a high graphics game", "Best visually stunning games?", "I want a game with next-gen graphics!", "Suggest a game with ultra-realistic visuals!"],
+            "responses": ["Feast your eyes on, Cyberpunk 2077, Horizon Forbidden West, Avatar: Frontiers of Pandora, Ghost of Tsushima, Uncharted: The lost legacy, Black Myth Wukong, Hellblade 2, Alan Wake 2, Red Dead Redemption 2!"],
+            "context": [""]
+        },
+        {
+            "tag": "shooting",
+            "patterns": ["Guns, explosions, and mayhem!", "I love FPS games!", "What’s a great shooter?", "Recommend an intense shooting game!", "Give me something tactical!"],
+            "responses": ["Lock and load! Try, Call of Duty: Modern Warfare, Doom (2016), Far Cry 4, Gears 5, System Shock (2023), Metro Exodus, Project IGI, Max Payne 3, Call of Duty: Advanced Warfare, Call of Duty: Black Ops 4, Call of Duty: Ghosts', Valorant, PUBG, Garena: Fire Fire, Delta Force Xtreme 2!"],
+            "context": [""]
+        },
+        {
+            "tag": "racing",
+            "patterns": ["I love fast cars!", "Recommend a thrilling racing game!", "What's a good racing game?", "Give me a high-speed challenge!", "Need a game with intense driving action!"],
+            "responses": ["Buckle up and hit the gas! Try, Forza Horizon 5, Need for Speed: Heat, Gran Turismo 7, F1 23, Assetto Corsa, Dirt Rally 2.0, Project CARS 2, Burnout Paradise Remastered, Mario Kart 8 Deluxe, The Crew 2, Wreckfest, Hot Wheels Unleashed, Need for Speed: Most Wanted, Need for Speed: Rivals, Trackmania Turbo!"],
+            "context": [""]
+        }
+    ]
+}
