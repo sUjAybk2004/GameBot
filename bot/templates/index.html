@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Recommender Bot 🎮</title>
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Moving Glowing Deep Blue Gradient Background */
+        body {
+            background: radial-gradient(circle, #001d3d, #003566, #00509d, #00296b, #000814, #00040d);
+            background-size: 200% 200%;
+            animation: gradientMove 10s infinite alternate ease-in-out;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            background: rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: moveParticle 10s infinite linear alternate;
+        }
+
+        @keyframes moveParticle {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-200px) translateX(100px); }
+        }
+
+        /* Chatbot Container */
+        .chat-container {
+            width: 600px;
+            height: 500px;
+            background: rgba(0, 0, 20, 0.9);
+            border-radius: 20px;
+            box-shadow: 0px 0px 30px cyan;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .chat-header {
+            background: linear-gradient(90deg, #000814, #001d3d);
+            color: cyan;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 10px;
+            color: white;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background: #0088cc;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px;
+            max-width: 45%;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background: #004466;
+            color: cyan;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px;
+            max-width: 45%;
+            text-align: left; /* Left-align bot responses */
+        }
+
+        .chat-input-container {
+            display: flex;
+            padding: 10px;
+            background: #00040d;
+            border-radius: 0 0 20px 20px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 8px;
+            background: #000814;
+            color: cyan;
+            border: none;
+            border-radius: 5px;
+            height: 40px;
+        }
+
+        .chat-input button {
+            padding: 8px 16px; /* Padding for better spacing */
+            background: #007bff; /* Blue background */
+            color: white; /* White text color */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Border radius */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background 0.3s ease; /* Smooth background transition */
+            height: 40px; /* Height equal to the text area */
+        }       
+
+        .chat-input button:hover {
+            background: #0056b3; /* Darker blue on hover */
+        } 
+
+        /* Style for games within double commas */
+        .game-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .game-link {
+            color: cyan;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .game-link:hover {
+            color: #00aaff;
+        }
+
+        .game-link b {
+            font-weight: bold;
+        }
+
+        .game-link i {
+            font-style: italic;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: cyan;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Floating Particles (They Move) -->
+<script>
+    function createParticles() {
+        for (let i = 0; i < 20; i++) {
+            let particle = document.createElement("div");
+            particle.className = "particle";
+            let size = Math.random() * 8 + 2;
+            particle.style.width = size + "px";
+            particle.style.height = size + "px";
+            particle.style.top = Math.random() * window.innerHeight + "px";
+            particle.style.left = Math.random() * window.innerWidth + "px";
+            particle.style.animationDuration = (Math.random() * 5 + 5) + "s";
+            particle.style.animationDelay = (Math.random() * 5) + "s";
+            document.body.appendChild(particle);
+        }
+    }
+    createParticles();
+</script>
+
+<!-- Chatbot Container -->
+<div class="chat-container">
+    <div class="chat-header">Game Recommender Bot 🎮</div>
+    <div class="chat-body" id="chat-body">
+        <div class="bot-message">How can I help you with Video Games?</div>
+    </div>
+    <div class="chat-input-container">
+        <input type="text" class="chat-input" id="user-input" placeholder="Type your message..." aria-label="Type your message" />
+        <button id="send-btn" aria-label="Send message">Send</button>
+    </div>
+</div>
+
+<!-- Hidden Audio -->
+<audio id="background-music" loop>
+    <source src="https://www.dropbox.com/scl/fi/4cd966outfuv1rrfffs74/spotidownloader.com-Ocean-Whale-Song-Picturesque-Sound.mp3?rlkey=y3u4ncanh78nk6yr0pkjsixsj&st=p7t9utqp&raw=1" type="audio/mpeg">
+</audio>
+
+<script>
+    const backgroundMusic = document.getElementById('background-music');
+    const chatBody = document.getElementById('chat-body');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    // Auto-Play Background Music After Click
+    document.body.addEventListener('click', function() {
+        if (backgroundMusic.paused) {
+            backgroundMusic.volume = 0.5;
+            backgroundMusic.play().then(() => {
+                console.log("Background music playing...");
+            }).catch(error => {
+                console.error("Audio play blocked:", error);
+                alert("Please allow audio playback for the best experience.");
+            });
+        }
+    });
+
+    // Function to send a message
+    async function sendMessage(message) {
+        if (!message.trim()) {
+            alert("Please enter a message.");
+            return;
+        }
+
+        // Add user message to chat
+        chatBody.innerHTML += `<div class="user-message">${message}</div>`;
+        userInput.value = '';
+
+        // Show loading spinner
+        const loadingSpinner = document.createElement('div');
+        loadingSpinner.className = 'loading-spinner';
+        chatBody.appendChild(loadingSpinner);
+
+        try {
+            // Send message to Flask backend
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const botResponse = data.response;
+
+            // Remove loading spinner
+            chatBody.removeChild(loadingSpinner);
+
+            // Add bot response to chat
+            const botMessageElement = document.createElement('div');
+            botMessageElement.className = 'bot-message';
+
+            // Parse games within double commas and format them
+            const formattedResponse = botResponse.replace(/,,(.*?),,/g, (match, games) => {
+                // Split games by comma and trim any extra spaces
+                const gameList = games.split(",").map(game => game.trim()).filter(game => game.length > 0);
+
+                // Format each game as a clickable link
+                const formattedGames = gameList.map(game => {
+                    return `<div class="game-link" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(game)}', '_blank')">
+                                <b><i>${game}</i></b>
+                            </div>`;
+                }).join("");
+
+                return `<div class="game-list">${formattedGames}</div>`;
+            });
+
+            botMessageElement.innerHTML = formattedResponse;
+            chatBody.appendChild(botMessageElement);
+        } catch (error) {
+            console.error("Error:", error);
+            chatBody.removeChild(loadingSpinner);
+            chatBody.innerHTML += `<div class="bot-message">Sorry, something went wrong. Please try again.</div>`;
+        }
+
+        // Auto-scroll to bottom
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // Handle Send Button Click
+    sendBtn.addEventListener('click', () => {
+        const message = userInput.value.trim();
+        sendMessage(message);
+    });
+
+    // Handle Enter Key Press
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendBtn.click();
+        }
+    });
+</script>
+
+</body>
+</html>
